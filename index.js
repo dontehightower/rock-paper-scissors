@@ -1,13 +1,18 @@
+const rock     = document.getElementById('rock'),
+      paper    = document.getElementById('paper'),
+      scissors = document.getElementById('scissors'),
+      messages = document.getElementById('messages'),
+      p = document.createElement('p');
 const rockPaperScissors = {
  score: {
     playerScore: 0,
     computerScore: 0
   },
   playerWins: undefined,
-
-  getPlayerSelection: function(){
-    return prompt("Choose your weapon. Rock, Paper, or Scissors?");
-  },
+  message: undefined,
+  // getPlayerSelection: function(){
+  //   return prompt("Choose your weapon. Rock, Paper, or Scissors?");
+  // },
 
   computerPlay: function(){
     let generator = (Math.random() * 10).toFixed();
@@ -24,25 +29,37 @@ const rockPaperScissors = {
     if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
       if (playerSelection === "paper" && computerSelection === "rock") {
         this.playerWins = true;
-        console.log( "You Win! Paper beats Rock");
+        this.message = "You Win! Paper beats Rock";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else if (playerSelection === "rock" && computerSelection === "paper"){
         this.playerWins = false;
-        console.log( "You Lose! Paper beats Rock");
+        this.message = "You Lose! Paper beats Rock";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else if (playerSelection === "scissors" && computerSelection === "paper"){
         this.playerWins = true;
-        console.log( "You Win! Scissors beats Paper!");
+        this.message = "You Win! Scissors beats Paper!";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else if (playerSelection === "paper" && computerSelection === "scissors"){
         this.playerWins = false;
-        console.log( "You Lose! Scissors beats Paper!");
+        this.message = "You Lose! Scissors beats Paper!";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else if (playerSelection === "rock" && computerSelection === "scissors"){
         this.playerWins = true;
-        console.log( "You Win! Rock beats Scissors!");
+        this.message = "You Win! Rock beats Scissors!";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else if (playerSelection === "scissors" && computerSelection ==="rock"){
         this.playerWins = false; 
-        console.log("You Lose! Rock Beats Scissors!");
+        this.message = "You Lose! Rock Beats Scissors!";
+        p.textContent = this.message;
+        messages.appendChild(p)
       } else {
         this.playerWins = undefined;
-        console.log("It's a tie!")
+        this.message = "It's a tie!";
       }
     } else {
       playerSelection = prompt("Invalid Choice, please select rock, paper, or scissors");
@@ -66,4 +83,13 @@ const rockPaperScissors = {
     }
   }
 }
-rockPaperScissors.fiveRoundGame();
+
+scissors.addEventListener('click', function(event) {
+  rockPaperScissors.playRound('scissors', rockPaperScissors.computerPlay());
+});
+paper.addEventListener('click', function(event){
+  rockPaperScissors.playRound('paper', rockPaperScissors.computerPlay());
+});
+rock.addEventListener('click', function(event){
+  rockPaperScissors.playRound('rock', rockPaperScissors.computerPlay());
+});

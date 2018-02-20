@@ -1,0 +1,39 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: inline-block;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  height: 300px;
+  width: 31%;
+  margin: 5px 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+#messages {
+  width: 95%;
+  height: 5vh;
+  margin: 5px auto;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+#messages p {
+  font-size: 20px;
+  text-align: center;
+
+}
